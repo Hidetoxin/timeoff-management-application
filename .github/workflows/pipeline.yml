@@ -1,7 +1,7 @@
 # vim: syntax=yaml
 ---
 
-name: "Pipeline"
+name: "🚰 Pipeline"
 
 on:
 
@@ -32,16 +32,18 @@ permissions:
 
 # PIPELINE STEPS
 jobs:
+
+  # CREATE DOCKER CONTAINER TO SENT TO ECS
   build_docker_image:
       name: "🐳 Build Docker Image"
       runs-on: "ubuntu-latest"
       steps:
+        # https://github.com/actions/checkout
+        - uses: "actions/checkout@v3"
         # https://github.com/actions/setup-node
         - uses: "actions/setup-node@v3"
           with:
             node-version: 13
-        # https://github.com/actions/checkout
-        - uses: "actions/checkout@v3"
         # https://github.com/docker/login-action
         # - uses: "docker/login-action@v2"
         #   with:
@@ -59,3 +61,28 @@ jobs:
             context: "."
             # build-args: |
             #   jar_name=${{ inputs.app_jar_name }}
+            #
+
+  # DEPLOY THE ECS REQUIRED INFRASTRUCTURE
+  deploy_terraform_infrastructure:
+      name: "☄️ Deploy Terraform Infrastructure"
+      needs:
+        - "build_docker_image"
+      runs-on: "ubuntu-latest"
+      steps:
+        # https://github.com/actions/checkout
+        - uses: "actions/checkout@v3"
+        # https://github.com/hashicorp/setup-terraform
+        - uses: "hashicorp/setup-terraform@v2"
+          with:
+            terraform_version: "1.1.7"
+        - name: "Deploy infrastructure"
+          env:
+            AWS_REGION: "eu-west-1"
+            AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+            AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          run: |
+            cd ./terraform
+            terraform init
+            terraform plan
+            # terraform apply --auto-aprove
