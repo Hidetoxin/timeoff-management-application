@@ -25,15 +25,16 @@ RUN apk add --update python make g++\
 
 COPY package.json  .
 RUN npm install 
-
-FROM alpine:latest
+# ---------------------------------------------------------------------
+# FROM alpine:latest
+FROM node:14.15.5-alpine
 
 LABEL org.label-schema.schema-version="1.0"
 LABEL org.label-schema.docker.cmd="docker run -d -p 3000:3000 --name alpine_timeoff"
 
-# RUN apk add --no-cache \
-#     nodejs npm \
-#     vim
+RUN apk add --no-cache \
+    nodejs npm \
+    vim
 
 RUN adduser --system app --home /app
 USER app
