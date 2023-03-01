@@ -56,7 +56,7 @@ jobs:
           with:
             push: true
             tags: |
-              ghcr.io/${{ github.repository_owner }}/gl-app:latest
+              ghcr.io/hidetoxin/gl-app:latest
             context: "."
 
   # DEPLOY THE ECS REQUIRED INFRASTRUCTURE
@@ -82,5 +82,5 @@ jobs:
             terraform init
             terraform plan
             # terraform apply --auto-aprove
-            # sleep 600
+            # sleep 300
             # terraform destroy --auto-aprove
