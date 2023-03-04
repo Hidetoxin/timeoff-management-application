@@ -1,0 +1,137 @@
+# vim: syntax=yaml
+---
+
+# AWS SETTINGS TO SHARE BETWEEN DIAGRAMS
+aws:
+  accounts:
+    ecs:
+      proc:
+        id: "205580082035"
+        env: "proc"
+        alias: "azecsapps-proc"
+        env_name: "concept"
+      deve:
+        id: "646007916794"
+        env: "deve"
+        alias: "azecsapps-deve"
+        env_name: "development"
+      prep:
+        id: "727822230354"
+        env: "prep"
+        alias: "azecsapps-prep"
+        env_name: "preproduction"
+      prod:
+        id: "434756586876"
+        env: "prod"
+        alias: "azecsapps-prod"
+        env_name: "production"
+
+# STYLES TO USE WITH THE DIAGRAMS AS CODE
+styles:
+
+  # GRUVBOX STYLE
+  # https://github.com/morhetz/gruvbox
+  gruvbox:
+
+    # THE PROPERTIES TO USE ON THE CLUSTER ELEMENTS
+    clusters:
+      style1:
+        bgcolor: '#1d2021'
+        fontcolor: '#fbf1c7'
+        fontsize: '26'
+        margin: 50,50
+        pencolor: '#fabd2f'
+        pendwidth: '10.0'
+      style2:
+        bgcolor: '#98971a'
+        fontcolor: '#1d2021'
+        fontsize: '24'
+        margin: 50,50
+        pencolor: '#a89984'
+        pendwidth: '10.0'
+      style3:
+        bgcolor: '#282828'
+        fontcolor: '#fbf1c7'
+        fontsize: '24'
+        margin: 50,50
+        pencolor: '#fabd2f'
+        pendwidth: '10.0'
+      style4:
+        bgcolor: transparent
+        margin: 50,50
+        pencolor: transparent
+
+    colors:
+      aqua:
+        dark: '#689d6a'
+        light: '#8ec07c'
+      background:
+        bg: '#282828'
+        bg0: '#282828'
+        bg0_h: '#1d2021'
+        bg0_s: '#32302f'
+        bg1: '#3c3836'
+        bg2: '#504945'
+        bg3: '#665c54'
+        bg4: '#7c6f64'
+      blue:
+        dark: '#458588'
+        light: '#83a598'
+      foreground:
+        fg: '#ebdbb2'
+        fg0: '#fbf1c7'
+        fg1: '#ebdbb2'
+        fg2: '#d5c4a1'
+        fg3: '#bdae93'
+        fg4: '#a89984'
+      gray:
+        dark: '#928374'
+        light: '#a89984'
+      green:
+        dark: '#98971a'
+        light: '#b8bb26'
+      orange:
+        dark: '#d65d0e'
+        light: '#fe8019'
+      purple:
+        dark: '#b16286'
+        light: '#d3869b'
+      red:
+        dark: '#cc241d'
+        light: '#fb4934'
+      yellow:
+        dark: '#d79921'
+        light: '#fabd2f'
+
+    # THE PROPERTIES TO USE ON THE DIAGRAM ELEMENTS
+    diagrams:
+      style1:
+        bgcolor: '#1d2021'
+        fontcolor: '#d79921'
+        fontsize: '32'
+
+    # THE PROPERTIES TO USE ON THE EDGE ELEMENTS
+    edges:
+      style1:
+        color: '#1d2021'
+        fontcolor: '#b8bb26'
+        pendwidth: '3.0'
+        style: solid
+      style2:
+        color: '#fbf1c7'
+        fontcolor: '#b8bb26'
+        pendwidth: '3.0'
+        style: solid
+      style3:
+        color: '#fbf1c7'
+        fontcolor: '#fbf1c7'
+        pendwidth: '3.0'
+        style: solid
+
+    # THE PROPERTIES TO USE ON THE NODE ELEMENTS
+    nodes:
+      style1:
+        width: '3.0'
+        height: '3.0'
+        fontsize: '18'
+        fontcolor: '#fbf1c7'
